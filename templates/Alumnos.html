@@ -1,0 +1,27 @@
+{% extends "layout.html" %} {% block container %}
+{% import "_macros.html" as macros %}
+
+<form class="max-w-sm mx-auto space-y-4">
+    <div>
+        <label for="id_user" class="block mb-2.5 text-sm font-medium text-heading">ID</label>
+        <input type="text" id="id_user" class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-2.5 py-2 shadow-xs placeholder:text-body" placeholder="" required />
+    </div>
+    <div>
+        <label for="nombre" class="block mb-2.5 text-sm font-medium text-heading">Nombre</label>
+        <input type="text" id="nombre" class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" placeholder="" required />
+    </div>
+    <div>
+        <label for="paterno" class="block mb-2.5 text-sm font-medium text-heading">Apellido paterno</label>
+        <input type="text" id="paterno" class="bg-neutral-secondary-medium border border-default-medium text-heading text-base rounded-base focus:ring-brand focus:border-brand block w-full px-3.5 py-3 shadow-xs placeholder:text-body" placeholder="" required />
+    </div>
+    <div>
+        <label for="materno" class="block mb-2.5 text-sm font-medium text-heading">Apellido materno</label>
+        <input type="text" id="materno" class="bg-neutral-secondary-medium border border-default-medium text-heading text-base rounded-base focus:ring-brand focus:border-brand block w-full px-4 py-3.5 shadow-xs placeholder:text-body" placeholder="" required />
+    </div>
+
+    <button type="submit" class="w-full text-white bg-brand hover:bg-brand-dark focus:ring-4 focus:outline-none focus:ring-brand-light font-medium rounded-base text-sm px-5 py-2.5 text-center shadow-md transition-all">
+        Guardar Registro
+    </button>
+</form>
+
+{% endblock %}

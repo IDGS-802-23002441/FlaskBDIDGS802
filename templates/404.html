@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - No Encontrado</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
+    
+    <style>
+        :root {
+            --bg-404: url('https://imgur.com/eHVyWTM.jpg');
+        }
+
+        body {
+            background-color: #111827; /* Fondo oscuro para que resalte el bloque */
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            font-family: sans-serif;
+        }
+
+        .block404 {
+            position: relative;
+            background-image: var(--bg-404);
+            background-size: cover;
+            background-position: center;
+            width: 95%;
+            max-width: 1200px;
+            height: 60vh; /* Altura relativa para evitar cortes en móvil */
+            min-height: 400px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 1.5rem;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        .waves {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: var(--bg-404);
+            background-size: cover;
+            background-position: center;
+            filter: url("#glitch");
+            opacity: 0.7;
+            z-index: 1;
+        }
+
+        .obj {
+            width: 180px;
+            position: absolute;
+            z-index: 5;
+            animation: animation-404 5s infinite ease-in-out;
+        }
+
+        .obj img { width: 100%; height: auto; }
+
+        .t404 {
+            position: absolute;
+            width: 300px;
+            height: 120px;
+            background-image: url('https://imgur.com/KPZo9YX.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            z-index: 10;
+        }
+
+        @keyframes animation-404 {
+            0%, 100% { transform: translate(0, 0) rotate(0); }
+            50% { transform: translate(-15px, 25px) rotate(-8deg); }
+        }
+
+        .btn-home {
+            position: absolute;
+            bottom: 30px;
+            z-index: 20;
+            background: rgba(255, 255, 255, 0.9);
+            color: #000;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-home:hover {
+            background: #fff;
+            transform: scale(1.1);
+        }
+
+        svg[version="1.1"] { display: none; }
+    </style>
+</head>
+<body>
+
+    <div class="block404">
+        <div class="waves"></div>
+        
+        <div class="obj">
+            <img src="https://imgur.com/w0Yb4MX.png" alt="Animación">
+        </div>
+
+        <div class="t404"></div>
+
+        <a href="/" class="btn-home">Regresar al Panel</a>
+
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+            <defs>
+                <filter id="glitch">
+                    <feTurbulence type="fractalNoise" baseFrequency="0.02 0.04" numOctaves="1" result="warp">
+                        <animate attributeName="baseFrequency" values="0.01 0.03; 0.03 0.05; 0.01 0.03" dur="2s" repeatCount="indefinite"/>
+                    </feTurbulence>
+                    <feColorMatrix in="warp" result="huedturb" type="hueRotate" values="90">
+                        <animate attributeName="values" values="0;360" dur="4s" repeatCount="indefinite"/>
+                    </feColorMatrix>
+                    <feDisplacementMap xChannelSelector="R" yChannelSelector="G" scale="30" in="SourceGraphic" in2="huedturb"/>
+                </filter>
+            </defs>
+        </svg>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+</body>
+</html>
