@@ -14,18 +14,54 @@ csrf=CSRFProtect()
 db.init_app(app)
 
 
-@app.route("/")
+@app.route("/", methods=["GET", "POST"])
 @app.route("/index")
 def index():
-	return render_template("index.html")
+    create_form = forms.userform2(request.form)
+    alumno = Alumno.query.all()
+    return render_template("index.html", form=create_form, alumno=alumno)
 
 @app.errorhandler(404)
 def page_not_found(e):
 	return render_template("404.html"), 404
 
-@app.route("/alumnos")
+@app.route("/alumnos", methods=["GET", "POST"])
 def layout():
-	return render_template("Alumnos.html")
+    create_form = forms.userform2(request.form)
+    if request.method == 'POST':
+            alum = Alumno(nombre = create_form.nombre.data,
+                          apaterno = create_form.apaterno.data,
+                          email = create_form.email.data)
+            db.session.add(alum)
+            db.session.commit()
+            return redirect(url_for('index'))
+    return render_template("Alumnos.html", form=create_form)
+
+@app.route("/detalles", methods=["GET", "POST"])
+def detalle():
+    if request.method == 'GET':
+        id = request.args.get('id')
+        alum1 = db.session.query(Alumno).filter(Alumno.id == id).first()
+        id = alum1.id
+        nombre = alum1.nombre
+        apaterno = alum1.apaterno
+        email = alum1.email
+    return render_template("detalles.html", id=id, nombre=nombre, apaterno=apaterno, email=email)
+
+@app.route("/modificar", methods=["GET", "POST"])
+def modificar():
+    create_form = forms.userform2(request.form)
+    if request.method == 'POST':
+        id = create_form.id.data
+        alum = db.session.query(Alumno).filter(Alumno.id == id).first()
+        alum.nombre = create_form.nombre.data
+        alum.apaterno = create_form.apaterno.data
+        alum.email = create_form.email.data
+        db.session.add(alum)
+        db.session.commit()
+        return redirect(url_for('index'))
+    return render_template("modificar.html", form=create_form)
+
 
 if __name__ == '__main__':
     csrf.init_app(app)

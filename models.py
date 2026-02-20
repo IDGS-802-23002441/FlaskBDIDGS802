@@ -3,7 +3,6 @@ from flask_sqlalchemy import SQLAlchemy
 import datetime
 
 db=SQLAlchemy()
-
 class Alumno(db.Model):
     __tablename__='alumnos'
     id=db.Column(db.Integer, primary_key=True)

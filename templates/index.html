@@ -1,22 +1,51 @@
-{% extends "layout.html" %} {% block container %}
-{% import "_macros.html" as macros %}
+{% extends "layout.html" %}
+{% block container %}
+{% import "_macros.html" as macro %}
 
-
-
-<form class="max-w-sm mx-auto">
-  <div class="mb-5">
-    <label for="email" class="block mb-2.5 text-sm font-medium text-heading">Your email</label>
-    <input type="email" id="email" class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" placeholder="name@flowbite.com" required />
-  </div>
-  <div class="mb-5">
-    <label for="password" class="block mb-2.5 text-sm font-medium text-heading">Your password</label>
-    <input type="password" id="password" class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" placeholder="••••••••" required />
-  </div>
-  <label for="remember" class="flex items-center mb-5">
-    <input id="remember" type="checkbox" value="" class="w-4 h-4 border border-default-medium rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft" required />
-    <p class="ms-2 text-sm font-medium text-heading select-none">I agree with the <a href="#" class="text-fg-brand hover:underline">terms and conditions</a>.</p>
-  </label>
-  <button type="submit" class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Submit</button>
-</form>
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg border border-gray-200">
+    <div class="p-4 bg-green-600 rounded-t-lg">
+        <a href="{{ url_for('layout') }}" class="flex items-center text-white font-medium w-fit hover:opacity-80 transition-opacity">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path>
+            </svg>
+            Nuevo Alumno
+        </a>
+    </div>
+<div class="relative overflow-x-auto bg-neutral-primary-soft shadow-xs rounded-base border border-default">
+    <table class="w-full text-sm text-left rtl:text-right text-body">
+        <thead class="text-sm text-body bg-neutral-secondary-soft border-b rounded-base border-default">
+            <tr>
+                <th scope="col" class="px-6 py-3 font-medium">ID</th>
+                <th scope="col" class="px-6 py-3 font-medium">Nombre</th>
+                <th scope="col" class="px-6 py-3 font-medium">Apellido</th>
+                <th scope="col" class="px-6 py-3 font-medium">Email</th>
+                <th scope="col" class="px-6 py-3 font-medium text-center">Editar</th>
+                <th scope="col" class="px-6 py-3 font-medium text-center">Detalles</th>
+                <th scope="col" class="px-6 py-3 font-medium text-center">Eliminar</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for alumn in alumno %}
+            <tr class="bg-white border-b border-default hover:bg-gray-50">
+                <td class="px-6 py-4 font-medium">{{ alumn.id }}</td>
+                <td class="px-6 py-4">{{ alumn.nombre }}</td>
+                <td class="px-6 py-4">{{ alumn.aPaterno }}</td>
+                <td class="px-6 py-4">{{ alumn.email }}</td>
+                
+                <td class="px-6 py-4 text-center">
+                    <a href="/editar?id={{ alumn.id }}" class="text-blue-600 hover:underline">Editar</a>
+                </td>
+                <td class="px-6 py-4 text-center">
+                    <a href="/detalles?id={{ alumn.id }}" class="text-green-600 hover:underline">Ver</a>
+                </td>
+                <td class="px-6 py-4 text-center">
+                    <a href="/eliminar?id={{ alumn.id }}" class="text-red-600 hover:underline">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 
 {% endblock %}
