@@ -18,7 +18,7 @@
      <div>
         {# Pasamos el objeto form.nombre, NO el string "nombre" #}
         {{ macros.campoNuevo(
-            field=form.apaterno, 
+            field=form.apellidos, 
             class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-2.5 py-2 shadow-xs", 
             placeholder="Escribe tu nombre"
         ) }}
@@ -32,9 +32,15 @@
             placeholder="Escribe tu nombre"
         ) }}
     </div>
-
+     <div>
+        {{ macros.campoNuevo(
+            field=form.telefono, 
+            class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-2.5 py-2 shadow-xs", 
+            placeholder="Escribe tu apellido"
+        ) }}
+    </div>
     <button type="submit" class="w-full text-white bg-brand hover:bg-brand-dark font-medium rounded-base text-sm px-5 py-2.5">
-        Guardar Registro
+        Guardar Modificacion
     </button>
     <a href="/" class="w-full text-white bg-brand hover:bg-brand-dark font-medium rounded-base text-sm px-5 py-2.5">
         Cancelar / Inicio

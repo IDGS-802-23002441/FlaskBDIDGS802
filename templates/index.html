@@ -20,6 +20,7 @@
                 <th scope="col" class="px-6 py-3 font-medium">Nombre</th>
                 <th scope="col" class="px-6 py-3 font-medium">Apellido</th>
                 <th scope="col" class="px-6 py-3 font-medium">Email</th>
+                <th scope="col" class="px-6 py-3 font-medium">Telefono</th>
                 <th scope="col" class="px-6 py-3 font-medium text-center">Editar</th>
                 <th scope="col" class="px-6 py-3 font-medium text-center">Detalles</th>
                 <th scope="col" class="px-6 py-3 font-medium text-center">Eliminar</th>
@@ -30,9 +31,9 @@
             <tr class="bg-white border-b border-default hover:bg-gray-50">
                 <td class="px-6 py-4 font-medium">{{ alumn.id }}</td>
                 <td class="px-6 py-4">{{ alumn.nombre }}</td>
-                <td class="px-6 py-4">{{ alumn.apaterno }}</td>
+                <td class="px-6 py-4">{{ alumn.apellidos }}</td>
                 <td class="px-6 py-4">{{ alumn.email }}</td>
-                
+                <td class="px-6 py-4">{{ alumn.telefono }}</td>
                 <td class="px-6 py-4 text-center">
                     <a href="/modificar?id={{ alumn.id }}" class="text-blue-600 hover:underline">Editar</a>
                 </td>
