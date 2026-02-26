@@ -4,10 +4,11 @@
 
 <form class="max-w-sm mx-auto space-y-4" method="POST">
     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
-        {{ form.id(style="display:none") }}
 
+    {{ form.id(style="display:none") }}
+   
     <div>
-        {# Pasamos el objeto form.nombre, NO el string "nombre" #}
+        
         {{ macros.campoNuevo(
             field=form.nombre, 
             class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-2.5 py-2 shadow-xs", 
@@ -16,20 +17,18 @@
     </div>
 
      <div>
-        {# Pasamos el objeto form.nombre, NO el string "nombre" #}
         {{ macros.campoNuevo(
             field=form.apaterno, 
             class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-2.5 py-2 shadow-xs", 
-            placeholder="Escribe tu nombre"
+            placeholder="Escribe tu apellido"
         ) }}
     </div>
 
      <div>
-        {# Pasamos el objeto form.nombre, NO el string "nombre" #}
         {{ macros.campoNuevo(
             field=form.email, 
             class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-2.5 py-2 shadow-xs", 
-            placeholder="Escribe tu nombre"
+            placeholder="Escribe tu email"
         ) }}
     </div>
 
@@ -37,7 +36,7 @@
         Guardar Registro
     </button>
     <a href="/" class="w-full text-white bg-brand hover:bg-brand-dark font-medium rounded-base text-sm px-5 py-2.5">
-        Cancelar / Inicio
+       Volver al Inicio
     </a>
 </form>
 {% endblock %}
